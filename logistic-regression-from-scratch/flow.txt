@@ -1,0 +1,33 @@
+🧠 The Entire Flow
+
+This is what I want permanently burned into your brain.
+
+Dataset
+
+↓
+
+Model
+
+↓
+
+Prediction
+
+↓
+
+Loss
+
+↓
+
+Gradient Descent
+
+↓
+
+Updated Weights
+
+↓
+
+Repeat
+
+If you remember this...
+
+Neural Networks become MUCH easier.
