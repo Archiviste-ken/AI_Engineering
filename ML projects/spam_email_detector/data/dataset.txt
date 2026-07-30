@@ -1,0 +1,17 @@
+📥 Dataset
+
+We'll use the classic SMS Spam Collection dataset.
+
+It contains messages like:
+
+Label	Message
+ham	I'll call you later
+spam	Congratulations! You've won ₹10,00,000! Click here!
+
+Notice something.
+
+Our features are text.
+
+This is completely different from Projects 1 and 2.
+
+We'll eventually convert text into numbers so a machine learning model can understand it.

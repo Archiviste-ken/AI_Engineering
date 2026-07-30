@@ -1,0 +1,48 @@
+🎯 Mini Challenge (Before Running)
+
+Look at the problem carefully.
+
+Our target is:
+
+spam
+
+or
+
+ham
+Question
+
+Why do you think the dataset uses the word:
+
+ham
+
+instead of:
+
+not spam
+
+This is actually a real term used in email systems.
+
+What do you think it means?
+
+(No Googling 😄)
+
+🎯 Your Task
+Add the code exactly where I showed.
+Run:
+python main.py
+Send me the output.
+📚 Small Theory (Worth Knowing)
+
+The terms come from email filtering:
+
+Spam → unwanted/junk messages.
+Ham → legitimate, normal messages.
+
+You'll see these words everywhere in NLP (Natural Language Processing), so it's good to get familiar with them early.
+
+After this sprint, we'll identify:
+
+✅ The text column (our feature X)
+✅ The label column (our target y)
+✅ Whether the dataset is balanced or imbalanced
+
+Then we'll begin the most exciting part: converting text into numbers using Bag of Words, which is the classical machine learning equivalent of preparing text for a model. From there, Logistic Regression and Binary Cross Entropy will finally make complete sense. 🚀

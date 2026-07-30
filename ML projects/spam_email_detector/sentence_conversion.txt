@@ -1,0 +1,95 @@
+Classical Machine Learning (Our Project)
+
+We don't use tokenizers or embeddings.
+
+Instead, we use something like:
+
+Sentence
+
+↓
+
+Split into words
+
+↓
+
+Count words
+
+↓
+
+Vector of numbers
+
+For example:
+
+Vocabulary:
+
+win
+free
+call
+meeting
+money
+
+Message:
+
+"Free money"
+
+Becomes:
+
+win	free	call	meeting	money
+0	1	0	0	1
+
+Now the model can understand it.
+
+This technique is called Bag of Words.
+
+Later, we'll learn TF-IDF, which is a smarter version.\
+
+
+🧠 Big Picture
+
+Notice the evolution:
+
+Classical ML
+Text
+
+↓
+
+Bag of Words
+
+↓
+
+Logistic Regression
+Deep Learning
+Text
+
+↓
+
+Tokenizer
+
+↓
+
+Embeddings
+
+↓
+
+Neural Network
+LLMs
+Text
+
+↓
+
+Tokenizer
+
+↓
+
+Embeddings
+
+↓
+
+Transformer
+
+↓
+
+Next Token Prediction
+
+So your intuition about tokenization wasn't wrong—it belongs to the modern deep learning pipeline. In this project, we're learning the simpler representation that came before it.
+
