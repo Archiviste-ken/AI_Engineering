@@ -1,10 +1,24 @@
 from perceptron import Perceptron
 
-p = Perceptron(3)
+and_data = [
+    ([0, 0], 0),
+    ([0, 1], 0),
+    ([1, 0], 0),
+    ([1, 1], 1),
+]
+p = Perceptron(2)
 
-p.weights = [2, -1, 3]
-p.bias = -2
+print("Before Training")
+print("----------------")
+print("Weights:", p.weights)
+print("Bias:", p.bias)
 
-print(p.predict([1, 0, 1]))
-print(p.predict([0, 1, 0]))
-print(p.predict([1, 1, 1]))
+print("\nStarting Training...\n")
+
+p.train(and_data, epochs=100)
+
+
+print("\nTraining Finished")
+print("----------------")
+print("Weights:", p.weights)
+print("Bias:", p.bias)
