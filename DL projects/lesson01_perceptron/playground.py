@@ -1,10 +1,10 @@
 from perceptron import Perceptron
 
-and_data = [
-    ([0, 0], 0),
-    ([0, 1], 0),
-    ([1, 0], 0),
-    ([1, 1], 1),
+xor_data = [
+    ([0,0],0),
+    ([0,1],1),
+    ([1,0],1),
+    ([1,1],0)
 ]
 p = Perceptron(2)
 
@@ -15,7 +15,7 @@ print("Bias:", p.bias)
 
 print("\nStarting Training...\n")
 
-p.train(and_data, epochs=100)
+p.train(xor_data, epochs=100)
 
 
 print("\nTraining Finished")

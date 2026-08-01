@@ -55,4 +55,4 @@ class Perceptron:
             print(f"Converged at epoch {epoch + 1}")
             return
         
-        print(f"Did not converge after {epochs} epochs")
+     print(f"Did not converge after {epochs} epochs")
