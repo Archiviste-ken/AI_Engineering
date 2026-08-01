@@ -96,3 +96,19 @@ Just intuition.
 📌 3.7 Composability
 
 Why modern AI stacks many networks together.
+
+🎯 End of Lesson 2
+
+By the end you'll understand:
+
+✅ What a Layer really is
+
+✅ Why multiple neurons work together
+
+✅ What a Forward Pass actually means
+
+✅ How data flows through an entire neural network
+
+✅ Why Deep Learning can solve problems that a single perceptron cannot
+
+✅ How to build a 2 → 2 → 1 Neural Network completely from scratch
