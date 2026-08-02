@@ -1,0 +1,27 @@
+🟢 Step 1
+value.py
+    ├── data
+    ├── gradient
+    ├── __add__
+    ├── __mul__
+
+🟢 Step 2
+Computational Graph
+
+🟢 Step 3
+Backward Propagation
+
+🟢 Step 4
+Sigmoid
+
+🟢 Step 5
+Update neuron.py
+
+🟢 Step 6
+Update layer.py
+
+🟢 Step 7
+Update network.py
+
+🟢 Step 8
+Train XOR 🎉

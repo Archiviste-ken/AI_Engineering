@@ -1,0 +1,49 @@
+🧠 Biggest Difference From Lesson 2
+
+Lesson 2 looked like this
+
+Input
+
+↓
+
+Neuron
+
+↓
+
+Layer
+
+↓
+
+Network
+
+↓
+
+Prediction
+
+Lesson 3 adds one new foundation underneath everything.
+
+Value
+
+↓
+
+Neuron
+
+↓
+
+Layer
+
+↓
+
+Network
+
+↓
+
+Prediction
+
+↓
+
+Learning
+
+🤯
+
+Everything is now built on top of the Value class.
