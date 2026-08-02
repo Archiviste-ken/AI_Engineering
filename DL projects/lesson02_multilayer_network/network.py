@@ -22,7 +22,15 @@ class Network:  # 🧠 Define the full neural network as an ordered set of layer
         
     def forward(self, inputs):  # 🚀 Run the complete forward pass through every layer in sequence.
 
+        print(f"Original Input: {inputs}")
+        
         for layer in self.layers:  # 🔁 Move through the network one layer at a time.
+            print("-" * 40)
+            print(f"Passing through Layer...")
             inputs = layer.forward(inputs) # 🔄 Replace the current inputs with the current layer's outputs.
+            print(f"Hidden State: {inputs}")
+            
+        print("-" * 40)
+        print(f"Final Output: {inputs}")
 
         return inputs  # 📤 Return the final network output after the last layer finishes.

@@ -18,7 +18,9 @@ class Layer:  # 🧩 Define a layer, which is just a collection of neurons worki
     def forward(self, inputs):  # 🚀 Send one input vector through every neuron in the layer.
 
         outputs = []  # 🧺 Prepare a list to collect each neuron's output.
+        print("\nLayer Outputs:")
         for neuron in self.neurons:  # 👀 Visit every neuron one by one.
             output = neuron.forward(inputs)  # ⚙️ Ask the neuron to compute its raw output from the same inputs.
-            outputs.append(output)  # 📥 Save that neuron's output in order.
+            outputs.append(output) # 📥 Save that neuron's output in order.
+            print(output)
         return outputs  # 📤 Return the full layer output as a list of neuron outputs.
