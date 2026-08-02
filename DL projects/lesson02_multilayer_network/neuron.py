@@ -11,3 +11,14 @@ class Neuron:
         ]
 
         self.bias = random.uniform(-1, 1)
+
+    def forward(self, inputs):
+
+        total = 0
+
+        for weight, input_value in zip(self.weights, inputs):
+            total += weight * input_value
+
+        total += self.bias
+
+        return total
