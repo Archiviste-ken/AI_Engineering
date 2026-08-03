@@ -1,32 +1,35 @@
 # 🟣 layer.py
 
-# Almost the same as Lesson 2.
+# A layer is still just a small bundle of neurons.
+# The structural idea is the same as Lesson 2; only the data type has changed.
 
-# The only difference is that every neuron now returns Value objects instead of plain floats.
-
-# 📝 At this stage, the layer is only a container for neurons.
-
-# 🧱 It does not add activation, learning, or other logic yet.
-
-from neuron import Neuron  # 🔌 Import the Neuron class so we can build layers out of neurons.
+from neuron import Neuron  # 🔌 Import the neuron building block used to populate the layer.
 
 
-class Layer:  # 🧩 Define a layer, which is just a collection of neurons working together.
+class Layer:  # 🧩 A layer groups several neurons that all see the same inputs.
+    # It does not decide on its own; it only coordinates the neurons inside it.
 
-    def __init__(self, n_inputs, n_neurons):  # 🏗️ Create a layer with a fixed input size and a fixed neuron count.
+    def __init__(self, n_inputs, n_neurons):  # 🏗️ Define the input width and neuron count.
+        # Store the neurons in a simple list so we can iterate over them later.
+        self.neurons = []
 
-        self.neurons = []  # 📦 Start with an empty list that will hold every neuron in this layer.
+        # Create each neuron with the same input width.
+        for _ in range(n_neurons):  # 🔁 Repeat for every neuron we want in this layer.
+            neuron = Neuron(n_inputs)  # 🧠 Each neuron gets its own independent parameters.
+            self.neurons.append(neuron)  # ➕ Collect the neuron into the layer.
 
-        for _ in range(n_neurons):  # 🔁 Repeat once for every neuron we want in the layer.
-            neuron = Neuron(n_inputs)  # 🧠 Build one neuron that expects the same number of inputs.
-            self.neurons.append(neuron)  # ➕ Store that neuron inside the layer.
-            
-    def forward(self, inputs):  # 🚀 Send one input vector through every neuron in the layer.
+    def forward(self, inputs):  # 🚀 Send one input vector through the full layer.
+        # Gather each neuron's output here so we can pass the whole list onward.
+        outputs = []
 
-        outputs = []  # 🧺 Prepare a list to collect each neuron's output.
-        print("\nLayer Outputs:")
-        for neuron in self.neurons:  # 👀 Visit every neuron one by one.
-            output = neuron.forward(inputs)  # ⚙️ Ask the neuron to compute its raw output from the same inputs.
-            outputs.append(output) # 📥 Save that neuron's output in order.
-            print(output)
-        return outputs  # 📤 Return the full layer output as a list of neuron outputs.
+        # The print statement is part of the lesson's teaching trace.
+        print("\nLayer Outputs:")  # 🖨️ Show the intermediate results clearly during the demo.
+
+        # Every neuron receives the same input vector and produces one output.
+        for neuron in self.neurons:  # 👀 Visit neurons one by one.
+            output = neuron.forward(inputs)  # ⚙️ Ask one neuron to compute its response.
+            outputs.append(output)  # 📥 Save the response in order.
+            print(output)  # 🖨️ Display the neuron output for learning visibility.
+
+        # The next layer will consume this list of Value objects.
+        return outputs  # 📤 Return the full layer output as a list.

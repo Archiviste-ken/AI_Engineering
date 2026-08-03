@@ -1,46 +1,37 @@
 # 🔵 neuron.py
 
-# We'll rewrite the neuron.
+# This file upgrades the Lesson 2 neuron so it can work with Value objects.
+# The logic stays the same: multiply each input by its weight, add everything
+# together, then add a bias term.
 
-# Instead of using normal numbers like
+import random  # 🎲 Use random initialization so the neuron starts with a unique guess.
 
-# 0.5
+from value import Value  # 🔌 Import the graph-aware scalar type used everywhere in Lesson 3.
 
-# it will now use
 
-# Value(0.5)
+class Neuron:  # 🧠 One neuron is the smallest trainable unit in this lesson.
+    # It keeps a list of weights and one bias, both stored as Value objects.
 
-# Every weight and bias will become a Value object.
+    def __init__(self, n_inputs):  # 🏗️ Create as many weights as the neuron has inputs.
+        # Each input gets its own learnable weight.
+        self.weights = [
+            Value(random.uniform(-1, 1))  # 🎯 Start from a random point in parameter space.
+            for _ in range(n_inputs)  # 🔁 Repeat once for every incoming feature.
+        ]
 
-# Why?
+        # The bias lets the neuron shift its output without needing an input.
+        self.bias = Value(random.uniform(-1, 1))  # 🎚️ Another trainable scalar, initialized randomly.
 
-# Because every number now needs to remember
+    def forward(self, inputs):  # 🚀 Compute the neuron's raw activation value.
+        # The weighted sum begins at zero and accumulates contributions one by one.
+        total = 0
 
-# where it came from
-# how it was computed
-# how gradients flow through it
+        # Pair each weight with its matching input value and accumulate the score.
+        for weight, input_value in zip(self.weights, inputs):  # 🤝 Match parameter to feature.
+            total += weight * input_value  # ✖️ Multiply input influence by learned strength.
 
-import random  # 🎲 Bring in Python's random number generator so the neuron can start with random values.
-from value import Value
+        # Add the bias at the end so the neuron can move its threshold freely.
+        total += self.bias  # ➕ Final offset before returning the neuron's output.
 
-class Neuron:  # 🧠 Define one artificial neuron, the smallest computing unit in this lesson.
-
-    def __init__(self, n_inputs):  # 🏗️ Build a neuron and tell it how many input values it should expect.
-
-        self.weights = [  # ⚖️ Create one weight for each input so every input can have its own influence.
-           Value(random.uniform(-1, 1))  # 🎯 Pick a random starting weight between -1 and 1.
-            for _ in range(n_inputs)  # 🔁 Repeat that random choice once per input position.
-        ]  # ✅ Finish the full list of initial weights.
-
-        self.bias = Value(random.uniform(-1, 1))  # 🎚️ Give the neuron one extra adjustable offset that shifts the output.
-
-    def forward(self, inputs):  # 🚀 Compute the neuron's output from the provided inputs.
-
-        total = 0  # 🧮 Start the running sum at zero before combining weights and inputs.
-
-        for weight, input_value in zip(self.weights, inputs):  # 🤝 Pair each weight with the matching input value.
-            total += weight * input_value  # ✖️ Multiply the pair and add it into the accumulated score.
-
-        total += self.bias  # ➕ Add the bias so the neuron can shift its decision threshold.
-
-        return total  # 📤 Return the raw weighted sum, which is the neuron's output for this lesson.
+        # Return the raw value; activation functions come later in the lesson.
+        return total  # 📤 This output remains a Value so gradients can flow through it.
