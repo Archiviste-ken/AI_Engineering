@@ -1,37 +1,61 @@
 # 🔵 neuron.py
 
 # This file upgrades the Lesson 2 neuron so it can work with Value objects.
-# The logic stays the same: multiply each input by its weight, add everything
-# together, then add a bias term.
+# The logic stays the same:
+# Multiply each input by its weight, add everything together,
+# then add a bias term.
 
-import random  # 🎲 Use random initialization so the neuron starts with a unique guess.
+import random
 
-from value import Value  # 🔌 Import the graph-aware scalar type used everywhere in Lesson 3.
+from value import Value
 
 
-class Neuron:  # 🧠 One neuron is the smallest trainable unit in this lesson.
-    # It keeps a list of weights and one bias, both stored as Value objects.
+class Neuron:
+    """
+    🧠 A single neuron.
 
-    def __init__(self, n_inputs):  # 🏗️ Create as many weights as the neuron has inputs.
-        # Each input gets its own learnable weight.
+    It stores:
+    - A weight for every input
+    - One bias
+
+    All parameters are Value objects so they can participate
+    in the computational graph and receive gradients.
+    """
+
+    def __init__(self, n_inputs):
+        """
+        🏗️ Create the neuron.
+
+        Every input gets its own random weight.
+        The neuron also gets one random bias.
+        """
+
         self.weights = [
-            Value(random.uniform(-1, 1))  # 🎯 Start from a random point in parameter space.
-            for _ in range(n_inputs)  # 🔁 Repeat once for every incoming feature.
+            Value(random.uniform(-1, 1))
+            for _ in range(n_inputs)
         ]
 
-        # The bias lets the neuron shift its output without needing an input.
-        self.bias = Value(random.uniform(-1, 1))  # 🎚️ Another trainable scalar, initialized randomly.
+        self.bias = Value(random.uniform(-1, 1))
 
-    def forward(self, inputs):  # 🚀 Compute the neuron's raw activation value.
-        # The weighted sum begins at zero and accumulates contributions one by one.
-        total = 0
+    def forward(self, inputs):
+        """
+        🚀 Compute the neuron's output.
 
-        # Pair each weight with its matching input value and accumulate the score.
-        for weight, input_value in zip(self.weights, inputs):  # 🤝 Match parameter to feature.
-            total += weight * input_value  # ✖️ Multiply input influence by learned strength.
+        Formula:
 
-        # Add the bias at the end so the neuron can move its threshold freely.
-        total += self.bias  # ➕ Final offset before returning the neuron's output.
+        output = (w1*x1 + w2*x2 + ... + wn*xn) + bias
 
-        # Return the raw value; activation functions come later in the lesson.
-        return total  # 📤 This output remains a Value so gradients can flow through it.
+        Because weights and bias are Value objects,
+        every multiplication and addition automatically
+        builds the computational graph.
+        """
+
+        total = self.bias
+
+        for weight, input_value in zip(self.weights, inputs):
+            total += weight * input_value
+
+        return total
+    
+    def parameters(self):
+        return self.weights + [self.bias]
