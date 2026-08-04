@@ -36,3 +36,4 @@ class Layer:
             params.extend(neuron.parameters())
 
         return params
+    

@@ -24,6 +24,10 @@ class Network:
         return inputs
     
     def parameters(self):
+        """
+        📦 Return every trainable parameter
+        from every layer in the network.
+        """
 
         params = []
 
