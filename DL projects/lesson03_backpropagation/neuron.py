@@ -23,6 +23,7 @@ class Neuron:
     """
 
     def __init__(self, n_inputs):
+        
         """
         🏗️ Create the neuron.
 
