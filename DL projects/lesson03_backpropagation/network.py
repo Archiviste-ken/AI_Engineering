@@ -35,3 +35,7 @@ class Network:
             params.extend(layer.parameters())
 
         return params
+    
+    def zero_grad(self):
+        for parameter in self.parameters():
+            parameter.grad = 0.0
