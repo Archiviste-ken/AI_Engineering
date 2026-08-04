@@ -25,6 +25,10 @@ class Layer:
         return outputs
     
     def parameters(self):
+        """
+        📦 Return every trainable parameter
+        from every neuron in this layer.
+        """
 
         params = []
 
