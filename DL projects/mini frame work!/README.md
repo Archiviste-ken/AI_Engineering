@@ -3,6 +3,7 @@
 This folder contains a tiny neural-network framework built from scratch.
 
 Files included:
+
 - `value.py`
 - `neuron.py`
 - `layer.py`
