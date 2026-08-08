@@ -1,4 +1,4 @@
-import demo
+import PyTorch.PyTorch_basics.demo as demo
 import torch
 
 model = demo.MyModel()
